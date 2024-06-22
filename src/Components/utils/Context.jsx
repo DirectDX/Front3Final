@@ -1,12 +1,11 @@
 import axios from "axios";
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-} from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 
-export const initialState = { theme: true, dentists: [], favs: [] };
+const lsFavs = JSON.parse(localStorage.getItem("favs")) || []; // aca se relogueas la pagina y agregas los mismos al favorito se duplican, chaaan
+
+const themeState = JSON.parse(localStorage.getItem("theme")) || true; // se hizo el intento, no funciona
+
+export const initialState = { theme: themeState, dentists: [], favs: lsFavs };
 
 export const ContextGlobal = createContext();
 
@@ -38,6 +37,14 @@ export const Context = ({ children }) => {
       );
     });
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("favs", JSON.stringify(state.favs));
+  }, [state.favs]);
+
+  useEffect(() => {
+    localStorage.setItem("theme", JSON.stringify(state.theme));
+  }, [state.theme]);
 
   return (
     <ContextGlobal.Provider value={{ state, dispatch }}>
