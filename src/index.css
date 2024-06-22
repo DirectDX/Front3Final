@@ -25,9 +25,10 @@ h1{
 
 nav{
   display: flex;
-  width: 80vw;
+  width: 90vw;
   justify-content: flex-start;
   padding: 1rem;
+  align-items: center;
 }
 
 a{
@@ -79,6 +80,9 @@ form{
   padding: 0.5rem 0.5rem 0 0.5rem;
   border: 0.5px solid rgb(136, 136, 136);
 }
+.card img{
+width: 100%;
+}
 
 .card:hover{
   border: 0.5px solid rgb(206, 217, 142);
@@ -119,4 +123,19 @@ tr:nth-child(even) {
 }
 .dark > a {
   color: white;
+}
+.theme-button {
+  margin-left: auto;
+  height: 35px;
+  width: 35px;
+}
+
+.details {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.details img {
+  width: 300px;
 }
